@@ -31,6 +31,8 @@ public class LoginPage {
 	@FindBy(xpath = "//div[@class='flash flash_notice']")
 	private WebElement loginSuccessMessage;
 	
+	@FindBy(xpath = "//div[@class='flash flash_alert']")
+	private WebElement invalidLoginDetailsMessage;
 	
 	public void enterEmailAddress(String emailText)
 	{
@@ -48,6 +50,10 @@ public class LoginPage {
 	
 	public String verifyLoginSuccessMessage() {
 		return elementutils.waitForVisibilityOfElement(loginSuccessMessage, commonUtils.EXPLICIT_WAIT_BASIC_TIME).getText();
+	}
+	
+	public String verifyInvalidLoginDetailsMessage() {
+		return elementutils.waitForVisibilityOfElement(invalidLoginDetailsMessage, commonUtils.EXPLICIT_WAIT_BASIC_TIME).getText();
 	}
 	
 }

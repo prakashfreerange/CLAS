@@ -23,15 +23,27 @@ public class Login {
 	    loginpage = new LoginPage(driver);
 	}
 
-	@When("^User enter valid email address (.+)$")
-	public void user_enter_valid_email_address_prakash_freerange_com(String emailText) {
-	   loginpage.enterEmailAddress(emailText);
+	
+	@When("^User enter email address (.+)$")
+	public void user_enter_email_address(String emailText) {
+	    loginpage.enterEmailAddress(emailText);
 	}
 
-	@When("^User enter valid password (.+)$")
-	public void user_enter_valid_password_avdi(String passwordText) {
-	   loginpage.enterPassword(passwordText);
+	@When("^User enter password (.+)$")
+	public void user_enter_password(String passwordText) {
+	    loginpage.enterPassword(passwordText);
 	}
+
+	@When("User dont enter email address")
+	public void user_dont_enter_email_address() {
+
+	}
+
+	@When("User dont enter password")
+	public void user_dont_enter_password() {
+
+	}
+	
 
 	@When("user clicks on login button")
 	public void user_clicks_on_login_button() {
@@ -43,5 +55,9 @@ public class Login {
 	   Assert.assertEquals("Signed in successfully.", loginpage.verifyLoginSuccessMessage());
 	}
 
+	@Then("user should get a warning message")
+	public void user_should_get_a_warning_message() {
+	   Assert.assertEquals("Invalid Email or password.", loginpage.verifyInvalidLoginDetailsMessage());
+	}
 
 }
